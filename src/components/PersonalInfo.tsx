@@ -7,8 +7,11 @@ class PersonalInfo extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange() {
+    handleChange(e:any) {
         console.log("personal details changed");
+        console.log(e.target.parentNode);
+        var formData = new FormData(e.target.parentNode);
+        console.log(formData);
     }
 
 
@@ -16,7 +19,7 @@ class PersonalInfo extends Component {
         return (
         <div className="personalInfo">
             <h2>Personal Details</h2>
-            <form onChange={this.handleChange}>
+            <form name="personalInfoForm" onChange={this.handleChange}>
                 <input type='text' id="firstName" name="firstName" placeholder="First Name"/>
                 <input type='text' id="lastName" name="lastName" placeholder="Last Name"/>
                 <input type='text' id="title" name="title" placeholder="Title"/>
