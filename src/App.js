@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
-import Form from './components/Form'
+import Form from './components/Form';
+import View from './components/View'
 // import './App.css';
 
 import './styles/style.scss';
@@ -51,6 +52,7 @@ class App extends Component {
       <div>
         <header>CV Builder</header>
         <Form/>
+        <View/>
         {/* <form onSubmit={this.onSubmitTask}>
           <label htmlFor='"taskInput'>Enter Task</label>
           <input onChange={this.handleChange} value={task.text} type='text' id = 'taskInput'/>
