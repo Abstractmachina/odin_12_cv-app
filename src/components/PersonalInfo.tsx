@@ -1,17 +1,24 @@
 import React,{ Component } from "react";
 
-class PersonalInfo extends Component {
-    constructor(props :any){
+type PersonalInfoProps = {
+    changeHandler: (data: FormData) => void,
+}
+
+
+
+class PersonalInfo extends Component<PersonalInfoProps, {}> {
+    constructor(props:PersonalInfoProps){
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(e:any) {
-        console.log("personal details changed");
-        console.log(e.target.parentNode);
+        // console.log("personal details changed");
+        // console.log(e.target.parentNode);
         var formData = new FormData(e.target.parentNode);
-        console.log(formData);
+        // console.log(formData);
+        this.props.changeHandler(formData);
     }
 
 
