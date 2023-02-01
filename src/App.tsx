@@ -2,26 +2,13 @@ import React, { Component } from 'react';
 // import uniqid from 'uniqid';
 import Form from './components/Form';
 import View from './components/View'
+
+import PersonalDetails from './classes/PersonalDetails';
 // import './App.css';
 
 import './styles/style.scss';
 
-class PersonalDetails {
-  firstname: string;
-  lastname: string;
-  title:string;
-  email:string;
-  phone:string;
-  location:string;  
-  constructor() {
-    this.firstname = '';
-    this.lastname = '';
-    this.title = '';
-    this.email = '';
-    this.phone = '';
-    this.location = '';
-  }
-}
+
 
 type AppState = {
   personal: PersonalDetails,
@@ -35,7 +22,7 @@ class App extends Component<{}, AppState> {
     super(props);
 
 
-    this.handlePersonalInfoChange = this.handlePersonalInfoChange.bind(this);
+    this.updatePersonalDetails = this.updatePersonalDetails.bind(this);
   }
 
 
@@ -62,7 +49,7 @@ class App extends Component<{}, AppState> {
   //   });
   // }
 
-  handlePersonalInfoChange(data: FormData) {
+  updatePersonalDetails(data: FormData) {
     const deets = this.state.personal;
     console.log("App: form data detected");
     deets.firstname = data.get("firstName").toString();
@@ -82,10 +69,10 @@ class App extends Component<{}, AppState> {
     // const {task, tasks } = this.state;
 
     return (
-      <div>
-        <header>CV Builder</header>
-        <Form handlePersonalInfoChange={this.handlePersonalInfoChange}/>
-        <View/>
+      <div className='appContainer'>
+        <header><h1>CV Builder</h1></header>
+        <Form handlePersonalInfoChange={this.updatePersonalDetails}/>
+        <View personalDetails={this.state.personal}/>
         {/* <form onSubmit={this.onSubmitTask}>
           <label htmlFor='"taskInput'>Enter Task</label>
           <input onChange={this.handleChange} value={task.text} type='text' id = 'taskInput'/>

@@ -1,21 +1,28 @@
 import React from 'react';
+import PersonalDetails from '../classes/PersonalDetails';
 
 type ViewProps = {
-    message:string,
+    personalDetails: PersonalDetails,
 }
 
 type ViewState = {
     value:0,
 }
 
-class View extends React.Component {
-    constructor(props:any) {
+class View extends React.Component<ViewProps, {}> {
+    constructor(props:|ViewProps) {
         super (props);
     }
 
     render() {
-        return <div className='cv_view'>
+        const deets = this.props.personalDetails;
+        console.log(deets);
 
+        return <div className='view'>
+            <h1>Preview</h1>
+            <div className='viewContainer'>
+                <header><h1>{deets.firstname} {deets.lastname}</h1></header>
+            </div>
         </div>;
     }
 }

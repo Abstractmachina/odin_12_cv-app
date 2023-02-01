@@ -22,7 +22,7 @@ class PersonalInfo extends Component<PersonalInfoProps, {}> {
     render() {
         return (
         <div className="personalInfo">
-            <h2>Personal Details</h2>
+            <h3>Personal Details</h3>
             <form name="personalInfoForm" onChange={this.handleChange}>
                 <input type='text' id="firstName" name="firstName" placeholder="First Name"/>
                 <input type='text' id="lastName" name="lastName" placeholder="Last Name"/>

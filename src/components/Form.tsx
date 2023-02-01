@@ -45,6 +45,7 @@ class Form extends Component<FormProps, {}> {
 render() {
     return (
         <div className="form">
+            <h2>Submission Form</h2>
             <PersonalInfo changeHandler={this.handlePersonalInfoChange}/>
             <WorkExperience/>
             <Education/>
