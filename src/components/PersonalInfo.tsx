@@ -14,10 +14,7 @@ class PersonalInfo extends Component<PersonalInfoProps, {}> {
     }
 
     handleChange(e:any) {
-        // console.log("personal details changed");
-        // console.log(e.target.parentNode);
         var formData = new FormData(e.target.parentNode);
-        // console.log(formData);
         this.props.changeHandler(formData);
     }
 

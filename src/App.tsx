@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
-import uniqid from 'uniqid';
+// import uniqid from 'uniqid';
 import Form from './components/Form';
 import View from './components/View'
 // import './App.css';
 
 import './styles/style.scss';
 
-class App extends Component {
+class PersonalDetails {
+  firstname: string;
+  lastname: string;
+  title:string;
+  email:string;
+  phone:string;
+  location:string;  
   constructor() {
-    super();
+    this.firstname = '';
+    this.lastname = '';
+    this.title = '';
+    this.email = '';
+    this.phone = '';
+    this.location = '';
+  }
+}
 
-    // this.state = {
-    //   task: { 
-    //     text: '',
-    //     id: uniqid(),
-    //     nr: -1,
-    //   },
-    //   tasks: [],
-    //   count: 1,
-    // }
+type AppState = {
+  personal: PersonalDetails,
+}
+
+class App extends Component<{}, AppState> {
+  state: AppState = {
+    personal: new PersonalDetails(),
+  }
+  constructor(props:any) {
+    super(props);
+
+
+    this.handlePersonalInfoChange = this.handlePersonalInfoChange.bind(this);
   }
 
 
@@ -45,13 +62,29 @@ class App extends Component {
   //   });
   // }
 
+  handlePersonalInfoChange(data: FormData) {
+    const deets = this.state.personal;
+    console.log("App: form data detected");
+    deets.firstname = data.get("firstName").toString();
+    deets.lastname = data.get('lastName').toString();
+    deets.title = data.get('title').toString();
+    deets.email = data.get('email').toString();
+    deets.phone = data.get('phone').toString();
+    deets.location = data.get('location').toString();
+    this.setState({
+      personal: deets,
+    })
+    console.log(this.state);
+
+  }
+
   render(){
     // const {task, tasks } = this.state;
 
     return (
       <div>
         <header>CV Builder</header>
-        <Form/>
+        <Form handlePersonalInfoChange={this.handlePersonalInfoChange}/>
         <View/>
         {/* <form onSubmit={this.onSubmitTask}>
           <label htmlFor='"taskInput'>Enter Task</label>

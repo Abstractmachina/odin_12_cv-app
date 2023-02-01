@@ -8,10 +8,10 @@ type ViewState = {
     value:0,
 }
 
-class View extends React.Component<ViewProps, ViewState> {
-    // constructor(props) {
-    //     super (props);
-    // }
+class View extends React.Component {
+    constructor(props:any) {
+        super (props);
+    }
 
     render() {
         return <div className='cv_view'>

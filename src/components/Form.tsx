@@ -3,20 +3,22 @@ import PersonalInfo from './PersonalInfo'
 import WorkExperience from "./WorkExperience";
 import Education from './Education'
 
+type FormProps = {
+    handlePersonalInfoChange: (data: FormData) => void,
+}
 
 
-class Form extends Component {
+class Form extends Component<FormProps, {}> {
     // const {tasks} = props;
 
-    constructor(props:any) {
+    constructor(props:FormProps) {
         super(props);
 
         this.handlePersonalInfoChange = this.handlePersonalInfoChange.bind(this);
     }
 
     handlePersonalInfoChange(formData:FormData) {
-        console.log("Form: personal details change detected");
-        console.log(formData);
+        this.props.handlePersonalInfoChange(formData);
     }
 //     const [tasks, setTasks] = useState(props.tasks);
 
