@@ -6,7 +6,7 @@ import View from './components/View'
 import PersonalDetails from './classes/PersonalDetails';
 // import './App.css';
 
-import './styles/style.scss';
+
 
 
 
@@ -71,8 +71,10 @@ class App extends Component<{}, AppState> {
     return (
       <div className='appContainer'>
         <header><h1>CV Builder</h1></header>
+        <main>
         <Form handlePersonalInfoChange={this.updatePersonalDetails}/>
         <View personalDetails={this.state.personal}/>
+        </main>
         {/* <form onSubmit={this.onSubmitTask}>
           <label htmlFor='"taskInput'>Enter Task</label>
           <input onChange={this.handleChange} value={task.text} type='text' id = 'taskInput'/>

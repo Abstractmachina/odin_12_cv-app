@@ -1,0 +1,19 @@
+.viewContainer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    // margin: 1em;
+    padding: 1em;
+    header{
+        align-items: center;
+        display: flex;
+        gap: 1em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 0.7em;
+    }
+}

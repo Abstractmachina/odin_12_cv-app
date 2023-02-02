@@ -6,12 +6,12 @@ class PersonalDetails {
     phone:string;
     location:string;  
     constructor() {
-      this.firstname = '';
-      this.lastname = '';
-      this.title = '';
-      this.email = '';
-      this.phone = '';
-      this.location = '';
+      this.firstname = 'First';
+      this.lastname = 'Last';
+      this.title = 'Title';
+      this.email = 'email@example.com';
+      this.phone = '+00 (0)00 000 0000';
+      this.location = 'Location';
     }
   }
   export default PersonalDetails;

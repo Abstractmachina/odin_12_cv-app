@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Component} from "react";
+import React, {Component} from "react";
 import PersonalInfo from './PersonalInfo'
 import WorkExperience from "./WorkExperience";
 import Education from './Education'
@@ -20,35 +20,16 @@ class Form extends Component<FormProps, {}> {
     handlePersonalInfoChange(formData:FormData) {
         this.props.handlePersonalInfoChange(formData);
     }
-//     const [tasks, setTasks] = useState(props.tasks);
 
-//     useEffect(() => {
-//         setTasks(props.tasks);
-//     }, [props])
-
-//     function onDeleteItem (e) {
-
-//         let idx = -1;
-//         for (let i = 0; i < tasks.length; i++) {
-//             if (tasks[i].id === e.target.id) {
-//                 idx = i;
-//                 break;
-//             }
-//         }
-//         console.log('id: '+idx);
-//         console.log('tasks: '+tasks);
-//         console.log('length: ' + tasks.length);
-//             setTasks(tasks.splice(idx, 1));
-//             console.log(tasks.length);
-
-// }
 render() {
     return (
         <div className="form">
             <h2>Submission Form</h2>
+            <div className="formContainer">
             <PersonalInfo changeHandler={this.handlePersonalInfoChange}/>
             <WorkExperience/>
             <Education/>
+            </div>
             
             {/* {
                 // console.log(tasks);
