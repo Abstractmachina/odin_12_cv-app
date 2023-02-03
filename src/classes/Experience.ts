@@ -15,6 +15,14 @@ class Experience {
         this.to = "";
         this.description = ''
     }
+
+    copy(other:Experience) {
+        this.company = other.company;
+        this.role = other.role;
+        this.from = other.from;
+        this.to = other.to;
+        this.description = other.description;
+    }
 }
 
 export default Experience;

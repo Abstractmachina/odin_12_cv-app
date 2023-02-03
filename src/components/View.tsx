@@ -14,6 +14,7 @@ class View extends React.Component<ViewProps, {}> {
 
     render() {
         const deets = this.props.personalDetails;
+        const placeholderDescription:string = 'This is a description of my experience. I did some of this, some of that.';
 
         return (<div className='view'>
             <h2>Preview</h2>
@@ -34,11 +35,11 @@ class View extends React.Component<ViewProps, {}> {
                         return (
                             <div key={item.id} className='experience-item-container'>
                                 <div className='main-info'>
-                                <h4>{item.company}</h4>
-                                <h4>{item.role}</h4>
-                                <h5>| {item.from} - {item.to}</h5>
+                                <h4>{(item.company === '')? 'A Company' : item.company}</h4>
+                                <h4>{item.role === '' ? 'My Role' : item.role}</h4>
+                                <h5>| {item.from===''?'Start':item.from} - {item.to===''?'End':item.to}</h5>
                                 </div>
-                                <p>{item.description}</p>
+                                <p>{item.description===''?placeholderDescription:item.description}</p>
                             </div>
                         );
                     })

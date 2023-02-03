@@ -27,13 +27,9 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
         this.deleteExperience = this.deleteExperience.bind(this);
     }
 
-    onExperienceChange(id:string, formData:FormData) {
+    onExperienceChange(id:string, update:Experience) {
         const ex = this._getExperience(id);
-        ex.company = formData.get("company").toString();
-        ex.role = formData.get("role").toString();
-        ex.from = formData.get("from").toString();
-        ex.to = formData.get("to").toString();
-        ex.description = formData.get("description").toString();
+        ex.copy(update);
         this.props.changeHandler(this.state.items);
     }
 
@@ -65,23 +61,13 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
         return (
             <div className="sectionExperience">
                 <h3>Work Experience</h3>
-                {/* tasks.map((task) => {
-                return <li key={task.id}>{task.nr}. {task.text}
-                    <button id={task.id} onClick={onDeleteItem} >delete</button>
-                </li>
-            }) */}
-
-                {
-
-                items.map((item) => {
+                {items.map((item) => {
                     return <ExperienceFormItem 
                         key={item.id} 
                         id={item.id}
                         changeHandler={this.onExperienceChange}
                         deleteHandler={this.deleteExperience}/>
-                })
-                }
-                {/* <ExperienceFormItem changeHandler={this.onExperienceChange}/> */}
+                })}
                 <button id="btn_add" onClick={this.addExperience}>Add</button>
             </div>
         );

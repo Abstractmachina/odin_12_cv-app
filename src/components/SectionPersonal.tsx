@@ -22,15 +22,15 @@ class SectionPersonal extends Component<SectionPersonalProps, SectionPersonalSta
     handleChange(e:any) {
         var data = new FormData(e.target.parentNode);
         const details = this.state.deets;
-    details.firstname = data.get("firstName").toString();
-    details.lastname = data.get('lastName').toString();
-    details.title = data.get('title').toString();
-    details.email = data.get('email').toString();
-    details.phone = data.get('phone').toString();
-    details.location = data.get('location').toString();
-    this.setState({
-      deets: details,
-    })
+        details.firstname = data.get("firstName").toString();
+        details.lastname = data.get('lastName').toString();
+        details.title = data.get('title').toString();
+        details.email = data.get('email').toString();
+        details.phone = data.get('phone').toString();
+        details.location = data.get('location').toString();
+        this.setState({
+        deets: details,
+        })
         this.props.changeHandler(this.state.deets);
     }
 
