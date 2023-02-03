@@ -38,7 +38,6 @@ class App extends Component<{}, AppState> {
   }
 
   updateExperiences(items: Experience[]) {
-    console.log("App.updateExperiences()");
     this.setState({
       experiences: items,
     })

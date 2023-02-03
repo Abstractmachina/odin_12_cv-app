@@ -32,7 +32,7 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
         ex.role = formData.get("role").toString();
         ex.from = formData.get("from").toString();
         ex.to = formData.get("to").toString();
-        ex.description = formData.get("company").toString();
+        ex.description = formData.get("description").toString();
         this.props.changeHandler(this.state.items);
     }
 
