@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Education extends Component {
+class SectionEducation extends Component {
     constructor(props) {
         super(props);
 
@@ -27,4 +27,4 @@ class Education extends Component {
     }
 }
 
-export default Education;
+export default SectionEducation;

@@ -1,24 +1,40 @@
 import React, {Component} from "react";
-import PersonalInfo from './PersonalInfo'
-import WorkExperience from "./WorkExperience";
-import Education from './Education'
+import SectionPersonal from './SectionPersonal'
+import SectionExperience from "./SectionExperience";
+import SectionEducation from './SectionEducation'
+import Experience from "../classes/Experience";
 
 type FormProps = {
-    handlePersonalInfoChange: (data: FormData) => void,
+    propagatePersonalInfoChange: (data: FormData) => void,
+    propagateExperienceChange: (items: Experience[]) => void,
+}
+
+type FormState = {
+    workItems: Experience[],
 }
 
 
-class Form extends Component<FormProps, {}> {
+class Form extends Component<FormProps, FormState> {
     // const {tasks} = props;
+
 
     constructor(props:FormProps) {
         super(props);
 
-        this.handlePersonalInfoChange = this.handlePersonalInfoChange.bind(this);
+
+        this.propagatePersonalInfoChange = this.propagatePersonalInfoChange.bind(this);
+        this.propagateExperienceChange = this.propagateExperienceChange.bind(this);
     }
 
-    handlePersonalInfoChange(formData:FormData) {
-        this.props.handlePersonalInfoChange(formData);
+    //propagate data to parent
+    propagatePersonalInfoChange(formData:FormData) {
+        this.props.propagatePersonalInfoChange(formData);
+    }
+
+    //propgate data to parent
+    propagateExperienceChange(items:Experience[]) {
+        console.log("Form.propgateExperienceChange()");
+        this.props.propagateExperienceChange(items);
     }
 
 render() {
@@ -26,19 +42,10 @@ render() {
         <div className="form">
             <h2>Submission Form</h2>
             <div className="formContainer">
-            <PersonalInfo changeHandler={this.handlePersonalInfoChange}/>
-            <WorkExperience/>
-            <Education/>
+            <SectionPersonal changeHandler={this.propagatePersonalInfoChange}/>
+            <SectionExperience changeHandler={this.propagateExperienceChange}/>
+            <SectionEducation/>
             </div>
-            
-            {/* {
-                // console.log(tasks);
-            tasks.map((task) => {
-                return <li key={task.id}>{task.nr}. {task.text}
-                    <button id={task.id} onClick={onDeleteItem} >delete</button>
-                </li>
-            })
-            } */}
         </div>
     )}
 }

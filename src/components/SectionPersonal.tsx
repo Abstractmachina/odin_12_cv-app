@@ -6,7 +6,7 @@ type PersonalInfoProps = {
 
 
 
-class PersonalInfo extends Component<PersonalInfoProps, {}> {
+class SectionPersonal extends Component<PersonalInfoProps, {}> {
     constructor(props:PersonalInfoProps){
         super(props);
 
@@ -35,4 +35,4 @@ class PersonalInfo extends Component<PersonalInfoProps, {}> {
     )}
 }
 
-export default PersonalInfo;
+export default SectionPersonal;

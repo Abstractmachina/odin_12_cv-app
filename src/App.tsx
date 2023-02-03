@@ -1,57 +1,31 @@
 import React, { Component } from 'react';
-// import uniqid from 'uniqid';
 import Form from './components/Form';
 import View from './components/View'
 
 import PersonalDetails from './classes/PersonalDetails';
-// import './App.css';
-
-
-
+import Experience from './classes/Experience';
 
 
 type AppState = {
   personal: PersonalDetails,
+  experiences: Experience[],
 }
 
 class App extends Component<{}, AppState> {
   state: AppState = {
     personal: new PersonalDetails(),
+    experiences: new Array<Experience>(),
   }
   constructor(props:any) {
     super(props);
 
 
     this.updatePersonalDetails = this.updatePersonalDetails.bind(this);
+    this.updateExperiences = this.updateExperiences.bind(this);
   }
-
-
-  // handleChange = (e) => {
-  //   this.setState({
-  //     task: {
-  //       text: e.target.value,
-  //       id: this.state.task.id,
-  //       nr: this.state.count,
-  //     }
-  //   });
-  // }
-
-  // onSubmitTask = (e) => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     task: {
-  //       text: '',
-  //       id: uniqid(),
-  //       // nr: this.state.count,
-  //     },
-  //     tasks: this.state.tasks.concat(this.state.task),
-  //     count: this.state.count +=1,
-  //   });
-  // }
 
   updatePersonalDetails(data: FormData) {
     const deets = this.state.personal;
-    console.log("App: form data detected");
     deets.firstname = data.get("firstName").toString();
     deets.lastname = data.get('lastName').toString();
     deets.title = data.get('title').toString();
@@ -61,26 +35,26 @@ class App extends Component<{}, AppState> {
     this.setState({
       personal: deets,
     })
-    console.log(this.state);
+  }
 
+  updateExperiences(items: Experience[]) {
+    console.log("App.updateExperiences()");
+    this.setState({
+      experiences: items,
+    })
   }
 
   render(){
-    // const {task, tasks } = this.state;
-
     return (
       <div className='appContainer'>
         <header><h1>CV Builder</h1></header>
         <main>
-        <Form handlePersonalInfoChange={this.updatePersonalDetails}/>
-        <View personalDetails={this.state.personal}/>
+        <Form 
+          propagatePersonalInfoChange={this.updatePersonalDetails}
+          propagateExperienceChange={this.updateExperiences}
+          />
+        <View personalDetails={this.state.personal} experiences={this.state.experiences}/>
         </main>
-        {/* <form onSubmit={this.onSubmitTask}>
-          <label htmlFor='"taskInput'>Enter Task</label>
-          <input onChange={this.handleChange} value={task.text} type='text' id = 'taskInput'/>
-          <button type='submit'>Add Task</button>
-        </form>
-        <Overview tasks={tasks} /> */}
       </div>
     );
   }

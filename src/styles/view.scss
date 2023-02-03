@@ -16,4 +16,14 @@
     h3 {
         font-size: 0.7em;
     }
+
+    section{
+        .experience-item-container{
+            .main-info{
+                display: flex;
+                justify-content: space-between;
+                gap: 1em;
+            }
+        }
+    }
 }
