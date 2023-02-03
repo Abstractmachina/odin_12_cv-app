@@ -30,7 +30,7 @@ class View extends React.Component<ViewProps, {}> {
                     <h3>{deets.email}</h3>
                     <h3>{deets.location}</h3>
                 </header>
-                <section className='view-experiences'>
+                <section className='view_experiences'>
                     <h2>Work Experience</h2>
                 {
                     this.props.experiences.map(item => {
@@ -47,7 +47,7 @@ class View extends React.Component<ViewProps, {}> {
                     })
                 }
                 </section>
-                <section>
+                <section className='view_education'>
                 <h2>Education</h2>
                 {
                     this.props.education.map(item => {

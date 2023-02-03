@@ -2,7 +2,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    // margin: 1em;
+    gap: 2em;
     padding: 1em;
     header{
         align-items: center;
@@ -18,12 +18,18 @@
     }
 
     section{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
         .experience-item-container{
-            .main-info{
-                display: flex;
-                justify-content: space-between;
-                gap: 1em;
-            }
+
+           
+        }
+
+        .main-info{
+            display: flex;
+            justify-content: space-between;
+            gap: 1em;
         }
     }
 }
