@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC }from "react";
 import Experience from "../classes/Experience";
 
 
@@ -9,15 +9,8 @@ type ExperienceFormItemProps ={
     deleteHandler: (id:string) => any,
 }
 
-// type ExperienceFormItemState = {
-//     element: Experience,
-// }
-
 class ExperienceFormItem extends React.Component<ExperienceFormItemProps, {}> {
 
-    // state: ExperienceFormItemState = {
-    //     element: new Experience(this.props.id),
-    // }
     id_:string;
 
     constructor(props: ExperienceFormItemProps){
