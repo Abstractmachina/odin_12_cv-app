@@ -4,10 +4,13 @@ import SectionExperience from "./SectionExperience";
 import SectionEducation from './SectionEducation'
 import Experience from "../classes/Experience";
 import PersonalDetails from "../classes/PersonalDetails";
+import Education from "../classes/Education";
 
 type FormProps = {
     propagatePersonalInfoChange: (data: PersonalDetails) => void,
     propagateExperienceChange: (items: Experience[]) => void,
+    propagateEducationChange: (items: Education[]) => void,
+
 }
 
 type FormState = {
@@ -25,6 +28,7 @@ class Form extends Component<FormProps, FormState> {
 
         this.propagatePersonalInfoChange = this.propagatePersonalInfoChange.bind(this);
         this.propagateExperienceChange = this.propagateExperienceChange.bind(this);
+        this.propagateEducationChange = this.propagateEducationChange.bind(this);
     }
 
     //propagate data to parent
@@ -34,8 +38,11 @@ class Form extends Component<FormProps, FormState> {
 
     //propgate data to parent
     propagateExperienceChange(items:Experience[]) {
-        console.log("Form.propgateExperienceChange()");
         this.props.propagateExperienceChange(items);
+    }
+
+    propagateEducationChange(items: Education[]) {
+        this.props.propagateEducationChange(items);
     }
 
 render() {
@@ -45,7 +52,7 @@ render() {
             <div className="formContainer">
             <SectionPersonal changeHandler={this.propagatePersonalInfoChange}/>
             <SectionExperience changeHandler={this.propagateExperienceChange}/>
-            <SectionEducation/>
+            <SectionEducation changeHandler={this.propagateEducationChange}/>
             </div>
         </div>
     )}

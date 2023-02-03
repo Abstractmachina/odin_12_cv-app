@@ -1,10 +1,12 @@
 import React from 'react';
 import Experience from '../classes/Experience';
 import PersonalDetails from '../classes/PersonalDetails';
+import Education from '../classes/Education';
 
 type ViewProps = {
     personalDetails: PersonalDetails,
     experiences: Experience[],
+    education: Education[],
 }
 
 class View extends React.Component<ViewProps, {}> {
@@ -37,6 +39,24 @@ class View extends React.Component<ViewProps, {}> {
                                 <div className='main-info'>
                                 <h4>{(item.company === '')? 'A Company' : item.company}</h4>
                                 <h4>{item.role === '' ? 'My Role' : item.role}</h4>
+                                <h5>| {item.from===''?'Start':item.from} - {item.to===''?'End':item.to}</h5>
+                                </div>
+                                <p>{item.description===''?placeholderDescription:item.description}</p>
+                            </div>
+                        );
+                    })
+                }
+                </section>
+                <section>
+                <h2>Education</h2>
+                {
+                    this.props.education.map(item => {
+                        return (
+                            <div key={item.id} className='education-item-container'>
+                                <div className='main-info'>
+                                <h4>{(item.uniName === '')? 'A University' : item.uniName}</h4>
+                                <h4>{(item.course === '')? 'My Course' : item.course}</h4>
+                                <h4>{item.uniLocation === '' ? 'Location' : item.uniLocation}</h4>
                                 <h5>| {item.from===''?'Start':item.from} - {item.to===''?'End':item.to}</h5>
                                 </div>
                                 <p>{item.description===''?placeholderDescription:item.description}</p>
