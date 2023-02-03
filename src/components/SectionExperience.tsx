@@ -24,6 +24,7 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
 
         this.onExperienceChange = this.onExperienceChange.bind(this);
         this.addExperience = this.addExperience.bind(this);
+        this.deleteExperience = this.deleteExperience.bind(this);
     }
 
     onExperienceChange(id:string, formData:FormData) {
@@ -42,6 +43,17 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
         this.setState({
             items: ar,
         });
+    }
+
+    deleteExperience(id:string) {
+        const ar = this.state.items;
+        if (ar.length<=1) return;
+
+        const result = ar.filter(element => element.id !== id);
+
+        this.setState({
+            items: result,
+        })
     }
 
     _getExperience(id:string) {
@@ -65,7 +77,8 @@ class SectionExperience extends React.Component<ExperienceProps, ExperienceState
                     return <ExperienceFormItem 
                         key={item.id} 
                         id={item.id}
-                        changeHandler={this.onExperienceChange}/>
+                        changeHandler={this.onExperienceChange}
+                        deleteHandler={this.deleteExperience}/>
                 })
                 }
                 {/* <ExperienceFormItem changeHandler={this.onExperienceChange}/> */}

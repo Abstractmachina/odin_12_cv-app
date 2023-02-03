@@ -32,7 +32,7 @@ class View extends React.Component<ViewProps, {}> {
                 {
                     this.props.experiences.map(item => {
                         return (
-                            <div className='experience-item-container'>
+                            <div key={item.id} className='experience-item-container'>
                                 <div className='main-info'>
                                 <h4>{item.company}</h4>
                                 <h4>{item.role}</h4>

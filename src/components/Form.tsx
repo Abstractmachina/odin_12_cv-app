@@ -3,9 +3,10 @@ import SectionPersonal from './SectionPersonal'
 import SectionExperience from "./SectionExperience";
 import SectionEducation from './SectionEducation'
 import Experience from "../classes/Experience";
+import PersonalDetails from "../classes/PersonalDetails";
 
 type FormProps = {
-    propagatePersonalInfoChange: (data: FormData) => void,
+    propagatePersonalInfoChange: (data: PersonalDetails) => void,
     propagateExperienceChange: (items: Experience[]) => void,
 }
 
@@ -27,8 +28,8 @@ class Form extends Component<FormProps, FormState> {
     }
 
     //propagate data to parent
-    propagatePersonalInfoChange(formData:FormData) {
-        this.props.propagatePersonalInfoChange(formData);
+    propagatePersonalInfoChange(deets:PersonalDetails) {
+        this.props.propagatePersonalInfoChange(deets);
     }
 
     //propgate data to parent

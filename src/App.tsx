@@ -24,16 +24,9 @@ class App extends Component<{}, AppState> {
     this.updateExperiences = this.updateExperiences.bind(this);
   }
 
-  updatePersonalDetails(data: FormData) {
-    const deets = this.state.personal;
-    deets.firstname = data.get("firstName").toString();
-    deets.lastname = data.get('lastName').toString();
-    deets.title = data.get('title').toString();
-    deets.email = data.get('email').toString();
-    deets.phone = data.get('phone').toString();
-    deets.location = data.get('location').toString();
+  updatePersonalDetails(data: PersonalDetails) {
     this.setState({
-      personal: deets,
+      personal: data,
     })
   }
 

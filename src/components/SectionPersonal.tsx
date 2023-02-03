@@ -1,21 +1,37 @@
 import React,{ Component } from "react";
+import PersonalDetails from "../classes/PersonalDetails";
 
-type PersonalInfoProps = {
-    changeHandler: (data: FormData) => void,
+type SectionPersonalProps = {
+    changeHandler: (data: PersonalDetails) => void,
 }
 
+type SectionPersonalState = {
+    deets: PersonalDetails,
+}
 
-
-class SectionPersonal extends Component<PersonalInfoProps, {}> {
-    constructor(props:PersonalInfoProps){
+class SectionPersonal extends Component<SectionPersonalProps, SectionPersonalState> {
+    state: SectionPersonalState = {
+        deets: new PersonalDetails(),
+    }
+    constructor(props:SectionPersonalProps){
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(e:any) {
-        var formData = new FormData(e.target.parentNode);
-        this.props.changeHandler(formData);
+        var data = new FormData(e.target.parentNode);
+        const details = this.state.deets;
+    details.firstname = data.get("firstName").toString();
+    details.lastname = data.get('lastName').toString();
+    details.title = data.get('title').toString();
+    details.email = data.get('email').toString();
+    details.phone = data.get('phone').toString();
+    details.location = data.get('location').toString();
+    this.setState({
+      deets: details,
+    })
+        this.props.changeHandler(this.state.deets);
     }
 
 
