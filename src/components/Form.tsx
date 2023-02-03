@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {FC, ReactElement} from "react";
 import SectionPersonal from './SectionPersonal'
 import SectionExperience from "./SectionExperience";
 import SectionEducation from './SectionEducation'
@@ -13,49 +13,29 @@ type FormProps = {
 
 }
 
-type FormState = {
-    workItems: Experience[],
-}
-
-
-class Form extends Component<FormProps, FormState> {
-    // const {tasks} = props;
-
-
-    constructor(props:FormProps) {
-        super(props);
-
-
-        this.propagatePersonalInfoChange = this.propagatePersonalInfoChange.bind(this);
-        this.propagateExperienceChange = this.propagateExperienceChange.bind(this);
-        this.propagateEducationChange = this.propagateEducationChange.bind(this);
-    }
+const Form: FC<FormProps> = (): ReactElement => {
 
     //propagate data to parent
-    propagatePersonalInfoChange(deets:PersonalDetails) {
+    function propagatePersonalInfoChange(deets:PersonalDetails) {
         this.props.propagatePersonalInfoChange(deets);
-    }
-
-    //propgate data to parent
-    propagateExperienceChange(items:Experience[]) {
+    };
+    function propagateExperienceChange(items:Experience[]) {
         this.props.propagateExperienceChange(items);
-    }
-
-    propagateEducationChange(items: Education[]) {
+    };
+    function propagateEducationChange(items: Education[]) {
         this.props.propagateEducationChange(items);
-    }
+    };
 
-render() {
     return (
         <div className="form">
             <h2>Submission Form</h2>
             <div className="formContainer">
-            <SectionPersonal changeHandler={this.propagatePersonalInfoChange}/>
-            <SectionExperience changeHandler={this.propagateExperienceChange}/>
-            <SectionEducation changeHandler={this.propagateEducationChange}/>
+            <SectionPersonal changeHandler={propagatePersonalInfoChange}/>
+            <SectionExperience changeHandler={propagateExperienceChange}/>
+            <SectionEducation changeHandler={propagateEducationChange}/>
             </div>
         </div>
-    )}
+    );
 }
 
 export default Form;
