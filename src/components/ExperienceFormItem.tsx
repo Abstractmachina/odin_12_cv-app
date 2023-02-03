@@ -12,11 +12,8 @@ type ExperienceFormItemProps ={
 const ExperienceFormItem: FC<ExperienceFormItemProps> = ({id, changeHandler, deleteHandler}): ReactElement => {
 
     const id_:string = id;
-
-
-        // this.id_ = props.id;
-
-        // this.props.changeHandler(this.id_, new Experience(this.id_));
+    
+    //i.e. componentDidMount() - execute once at construction
     useEffect(() => {
         changeHandler(id_, new Experience(id_));
     }, []);
